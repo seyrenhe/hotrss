@@ -1,5 +1,4 @@
-package zdm_hot1
-// 示例
+package xueqiu
 
 import (
 	"context"
@@ -7,13 +6,13 @@ import (
 	"testing"
 )
 
-func TestZdmHot1(t *testing.T) {
-	zdmHot1 := NewZdmHot1()
-	feed, err := zdmHot1.GenRssFeed(context.Background())
+func TestNewXueQiu(t *testing.T) {
+	hupubxj := NewXueqiu()
+
+	feed, err := hupubxj.GenRssFeed(context.Background())
 	if err != nil {
 		t.Fatalf("GenRssFeed failed %v", err)
 	}
-
 	if len(feed.Items) == 0 {
 		t.Fatal("can not generate rss feed, please checkout your code")
 	}
@@ -26,6 +25,6 @@ func TestZdmHot1(t *testing.T) {
 		t.Fatalf("feed to rss failed %v", err)
 	}
 	t.Logf("HupuBXJ total Rss %d", len(feed.Items))
-	ioutil.WriteFile("../../../../zdm_hot1.json", []byte(rssjson), 0755)
-	ioutil.WriteFile("../../../../zdm_hot1.xml", []byte(rssxml), 0755)
+	ioutil.WriteFile("rss.json", []byte(rssjson), 0755)
+	ioutil.WriteFile("rss.xml", []byte(rssxml), 0755)
 }

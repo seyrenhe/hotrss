@@ -1,5 +1,4 @@
-package zdm_hot1
-// 示例
+package kr36
 
 import (
 	"context"
@@ -7,9 +6,9 @@ import (
 	"testing"
 )
 
-func TestZdmHot1(t *testing.T) {
-	zdmHot1 := NewZdmHot1()
-	feed, err := zdmHot1.GenRssFeed(context.Background())
+func TestNewKr36(t *testing.T) {
+	kr36 := NewKr36()
+	feed, err := kr36.GenRssFeed(context.Background())
 	if err != nil {
 		t.Fatalf("GenRssFeed failed %v", err)
 	}
@@ -26,6 +25,6 @@ func TestZdmHot1(t *testing.T) {
 		t.Fatalf("feed to rss failed %v", err)
 	}
 	t.Logf("HupuBXJ total Rss %d", len(feed.Items))
-	ioutil.WriteFile("../../../../zdm_hot1.json", []byte(rssjson), 0755)
-	ioutil.WriteFile("../../../../zdm_hot1.xml", []byte(rssxml), 0755)
+	ioutil.WriteFile("../../../../rss.json", []byte(rssjson), 0755)
+	ioutil.WriteFile("../../../../rss.xml", []byte(rssxml), 0755)
 }
